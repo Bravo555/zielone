@@ -1,5 +1,6 @@
 const userList = document.querySelector("#users");
-const ws = new WebSocket(`ws://${document.location.host}/ws`);
+let proto = document.location.protocol == "http:" ? "ws" : "wss";
+const ws = new WebSocket(`${proto}://${document.location.host}/ws`);
 
 setInterval(() => ws.send("2137"), 5000);
 
