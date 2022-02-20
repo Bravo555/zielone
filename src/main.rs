@@ -1,5 +1,6 @@
 use std::{
     collections::HashMap,
+    env,
     sync::{
         atomic::{AtomicUsize, Ordering},
         Arc,
@@ -41,6 +42,10 @@ static NEXT_USER_ID: AtomicUsize = AtomicUsize::new(1);
 
 #[tokio::main]
 async fn main() {
+    let port = env::var("PORT")
+        .map(|port| port.parse().unwrap())
+        .unwrap_or(3030);
+
     let users: Users = Arc::new(RwLock::new(HashMap::new()));
 
     let users_filter = warp::any().map(move || users.clone());
@@ -58,7 +63,8 @@ async fn main() {
 
     let routes = ws.or(files);
 
-    warp::serve(routes).run(([0, 0, 0, 0], 3030)).await;
+    println!("listening on port {port}");
+    warp::serve(routes).run(([0, 0, 0, 0], port)).await;
 }
 
 async fn user_connected(websocket: WebSocket, users: Users) {
