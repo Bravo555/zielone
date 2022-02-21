@@ -1,20 +1,102 @@
-<meta charset="utf-8">
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zielone</title>
 
-<style>
-    body {
-        background-color: #222;
-        color: #ddd;
-    }
-</style>
+    <style>
+        body {
+            background-color: #222;
+            color: #ddd;
+        }
 
-<div>Twoje id: <span id="yourid"></span></div>
-<span>Połączeni użytkownicy:</span>
+        h1 {
+            text-align: center;
+        }
 
-<ul id="users">
+        .hoz {
+            justify-content: center;
+        }
 
-</ul>
+        .vert {
+            text-align: center;
+        }
 
-<button id="green" style="color: green">ZIELONE</button>
-<button id="red" style="color: red">czerwone</button>
+        .flex {
+            display: flex;
+        }
 
-<script src="/index.js"></script>
+        .button-row {
+            justify-content: space-evenly;
+        }
+
+        .prompt-wrapper {
+            margin: 2em 0;
+            font-family: sans-serif;
+        }
+
+        #prompt {
+            font-size: 2rem;
+            margin-bottom: 0.25em;
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 1em;
+            padding: 1em 2em;
+
+            font-size: 1em;
+            font-weight: bold;
+        }
+
+        .btn-green {
+            background-color: green;
+            color: white;
+        }
+
+        .btn-red {
+            background-color: red;
+            color: white;
+        }
+
+        .btn:hover {
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrapper flex hoz">
+        <div class="wrapper vert">
+            <h1>Zielone</h1>
+            <hr>
+            <div>Twoje id: <span id="yourid"></span></div>
+            <span>Połączonych użytkowników: <span id="numconnected"></span></span>
+
+            <ul id="users">
+            </ul>
+
+            <div class="prompt-wrapper">
+                <div id="prompt">Proszę ✅ czy Państwo rozumiecie</div>
+
+                <div id="votecounter">
+                    <span id="votes-cast">0</span>/<span id="votes-total">0</span>
+                </div>
+                <div id="votes-percentage">0%</div>
+            </div>
+
+            <div class="flex button-row">
+                <button class="btn btn-green" id="green">ZIELONE</button>
+                <button class="btn btn-red" id="red">czerwone</button>
+            </div>
+
+            <script src="/index.js"></script>
+        </div>
+    </div>
+</body>
+</html>
+
+
